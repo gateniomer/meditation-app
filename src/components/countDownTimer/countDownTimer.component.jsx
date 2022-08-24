@@ -7,21 +7,19 @@ export const CountDownTimer = ({howLong}) =>{
 
   useEffect(()=>{
     let interval = null;
-    if(isRunning){
+    if(isRunning)
       interval = setInterval(()=> updateTime(interval),1000);
-    }else{
-      clearInterval(interval);
-    }
-
-    return () => clearInterval(interval);
+    
+    return () => {
+      console.log('return effect')
+      clearInterval(interval)}
   },[isRunning]);
 
-  const updateTime = (interval) => {
+  const updateTime = () => {
     setTime((prev)=> {
       if(prev > 1){
         return prev-1;
       }else{
-        clearInterval(interval);
         setIsRunning(false);
         return 0;
       }
