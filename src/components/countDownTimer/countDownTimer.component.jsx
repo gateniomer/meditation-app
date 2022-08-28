@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'; 
 import Button from '../button/button.component'; 
 
-export const CountDownTimer = ({howLong}) =>{
+export const CountDownTimer = ({howLong,onFinish}) =>{
   const [time,setTime] = useState(howLong);
   const [isRunning,setIsRunning] = useState(false);
 
@@ -21,17 +21,29 @@ export const CountDownTimer = ({howLong}) =>{
         return prev-1;
       }else{
         setIsRunning(false);
+        onFinish();
         return 0;
       }
     })
   }
-
+  const printTime = () => {
+    const minutes = Math.floor(time/60);
+    const seconds = time-minutes*60;
+    return <h1>
+      {(minutes.toString().length === 1) ?
+      `0${minutes}` : minutes}
+      :
+      {(seconds.toString().length === 1) ? `0${seconds}` : seconds}
+      {/* {(seconds.toString().length === 1) ?
+      `0${seconds}` : {seconds}} */}
+      </h1>;
+  }
   return (
     <div className="bg-slate-600 block text-center mx-auto w-20 my-3 text-white p-2 rounded">
 
       {console.log('Stopwatch rendered',time)}
 
-      <h1>{time}</h1>
+      {printTime()}
       
       {!isRunning && time === howLong && <Button 
       onClickHandler={()=> setIsRunning(true)}>Start</Button>}

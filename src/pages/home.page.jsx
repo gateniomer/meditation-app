@@ -1,23 +1,19 @@
 import CountDownTimer from "../components/countDownTimer/countDownTimer.component";
 import {useState} from 'react';
+import EXERCISES from '../exercises';
 
 const Home = () => {
-  const [isCountDownTimerRunning,setIsCountDownTimerRunning] = useState(false);
 
-  const onClickHandler = () => {
-    setIsCountDownTimerRunning((prev) => !prev);
-  }
+  const [exerciseSelected,setExericeSelected] = useState(EXERCISES.MEDITATE);
+
   const onCountDownTimerFinish = () => {
     console.log('finished!');
-    setIsCountDownTimerRunning(false);
   }
-  // onCountDownTimerFinish.bind(this);
   return(
     <div>
       {console.log('Home Page rendered!')}
       <CountDownTimer 
       howLong={3} 
-      start={isCountDownTimerRunning}
       onFinish={onCountDownTimerFinish}
       />
       
