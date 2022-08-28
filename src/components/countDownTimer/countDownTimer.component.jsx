@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'; 
 import Button from '../button/button.component'; 
+import {ReactComponent as ExerciseLogo} from '../../assets/placeholder.svg';
 
 export const CountDownTimer = ({howLong,onFinish}) =>{
   const [time,setTime] = useState(howLong);
@@ -29,22 +30,21 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
   const printTime = () => {
     const minutes = Math.floor(time/60);
     const seconds = time-minutes*60;
-    return <h1>
+    return <span className='text-5xl mb-10 text-white font-semibold'>
       {(minutes.toString().length === 1) ?
       `0${minutes}` : minutes}
       :
       {(seconds.toString().length === 1) ? `0${seconds}` : seconds}
-      {/* {(seconds.toString().length === 1) ?
-      `0${seconds}` : {seconds}} */}
-      </h1>;
+      </span>;
   }
   return (
-    <div className="bg-slate-600 block text-center mx-auto w-20 my-3 text-white p-2 rounded">
+    <div className="flex flex-col mx-auto h-screen justify-center items-center ">
 
       {console.log('Stopwatch rendered',time)}
 
+      <ExerciseLogo className="w-48 h-48 mb-3"/>
       {printTime()}
-      
+      <div className='flex'>
       {!isRunning && time === howLong && <Button 
       onClickHandler={()=> setIsRunning(true)}>Start</Button>}
 
@@ -59,7 +59,7 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       onClickHandler={()=>{
         setTime(howLong)
         setIsRunning(false)}}>Reset</Button>}
-      
+      </div>
     </div>
   )
 }

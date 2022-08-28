@@ -10,8 +10,7 @@ const Home = () => {
     console.log('finished!');
   }
   return(
-    <div>
-      {console.log('Home Page rendered!')}
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full h-screen">
       <CountDownTimer 
       howLong={3} 
       onFinish={onCountDownTimerFinish}
