@@ -1,7 +1,17 @@
+import CountDownTimer from "../components/countDownTimer/countDownTimer.component";
+
 const Exercise = () => {
+
+  const onCountDownTimerFinish = () => {
+    console.log('Finished!');
+  }
   return (
-    <div>
-      <h1>Exercise Page!</h1>
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full h-screen">
+      <CountDownTimer 
+      howLong={3} 
+      onFinish={onCountDownTimerFinish}
+      />
+      
     </div>
   )
 }
