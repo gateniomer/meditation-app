@@ -5,8 +5,27 @@ import { useState } from "react";
 
 const SelectExerciseButton = () => {
   const [exerciseSelected,setExericeSelected] = useState(EXERCISES.MEDITATE);
+  const [time,setTime] = useState(0);
   const [selectMode,setSelectMode] = useState(false);
-  console.log(selectMode);
+  
+  //Handling display time in the right format
+  const timeToMinutes = Math.floor(time/60);
+  const timeToSeconds = time - timeToMinutes*60;
+  const timeToDisplay = `
+  ${time === 0 ? 'Pick Time' : ""}
+  ${timeToMinutes ? (timeToMinutes+'m') : ""}
+  ${timeToSeconds ? (timeToSeconds+'s') : ""}`;
+
+  const onPlusClickHanlder = () => {
+    setTime(prevTime => prevTime +10);
+  }
+  const onMinusClickHanlder = () => {
+    if(time>0) setTime(prevTime => prevTime - 10);
+  }
+  const onAddTimeHandler = (time=0) => {
+    setTime(prevTime => prevTime + time);
+  }
+  
   return (
     <div className="transition-all">
       {selectMode ? 
@@ -27,17 +46,33 @@ const SelectExerciseButton = () => {
         )}
       </div>
       :""}
-      <Button 
-      className='flex justify-center items-center'
-      onClickHandler={()=>setSelectMode(!selectMode)}>
-        <exerciseSelected.icon className="w-10 h-10"/>
-        <Link to="exercise">
-          <div className="flex flex-col ml-3">
-          {exerciseSelected.title}
-          <span>00:00</span>
-          </div>
-        </Link>
-      </Button>
+      <div className="flex">
+        {selectMode && 
+        <Button onClickHandler = {onMinusClickHanlder}>-</Button>}
+
+        <Button 
+        className='flex justify-center items-center'
+        onClickHandler={()=>setSelectMode(!selectMode)}>
+          <exerciseSelected.icon className="w-10 h-10"/>
+          <Link to="exercise">
+            <div className="flex flex-col ml-3">
+            {exerciseSelected.title}
+            <span>{timeToDisplay}</span>
+            </div>
+          </Link>
+        </Button>
+        
+        {selectMode && 
+        <Button onClickHandler = {onPlusClickHanlder}>+</Button>}
+      </div>
+      {selectMode && 
+      <div>
+        <Button onClickHandler={()=>setTime(0)}>Reset</Button>
+      <Button onClickHandler={()=>onAddTimeHandler(60)}>+1m</Button>
+      <Button onClickHandler={()=>onAddTimeHandler(300)}>+5m</Button>
+      <Button onClickHandler={()=>onAddTimeHandler(600)}>+10m</Button>
+      <Button onClickHandler={()=>onAddTimeHandler(1800)}>+30m</Button>
+      </div>}
     </div>
   )
 }
