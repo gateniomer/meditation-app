@@ -38,7 +38,7 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       </span>;
   }
   return (
-    <div className="flex flex-col mx-auto h-screen justify-center items-center ">
+    <div className="flex flex-col mx-auto justify-center items-center ">
 
       {console.log('Stopwatch rendered',time)}
 

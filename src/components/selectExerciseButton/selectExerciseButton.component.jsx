@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import EXERCISES from "../../exercises";
 import { useState } from "react";
 
-const SelectExerciseButton = () => {
+const SelectExerciseButton = ({onClickHandler}) => {
   const [exerciseSelected,setExericeSelected] = useState(EXERCISES.MEDITATE);
-  const [time,setTime] = useState(0);
+  const [time,setTime] = useState(30);
   const [selectMode,setSelectMode] = useState(false);
   
   //Handling display time in the right format
@@ -15,6 +15,11 @@ const SelectExerciseButton = () => {
   ${time === 0 ? 'Pick Time' : ""}
   ${timeToMinutes ? (timeToMinutes+'m') : ""}
   ${timeToSeconds ? (timeToSeconds+'s') : ""}`;
+
+  const exerciseDetails = {
+    time:time,
+    exercise:exerciseSelected
+  }
 
   const onPlusClickHanlder = () => {
     setTime(prevTime => prevTime +10);
@@ -52,9 +57,9 @@ const SelectExerciseButton = () => {
 
         <Button 
         className='flex justify-center items-center'
-        onClickHandler={()=>setSelectMode(!selectMode)}>
-          <exerciseSelected.icon className="w-10 h-10"/>
-          <Link to="exercise">
+        >
+          <img className="w-10 h-10" onClick={()=>setSelectMode(!selectMode)}/>
+          <Link to="exercise" state={({time,exercise:exerciseSelected})}>
             <div className="flex flex-col ml-3">
             {exerciseSelected.title}
             <span>{timeToDisplay}</span>
