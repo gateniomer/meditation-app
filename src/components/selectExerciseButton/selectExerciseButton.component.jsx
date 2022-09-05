@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const SelectExerciseButton = ({onClickHandler}) => {
   const [exerciseSelected,setExericeSelected] = useState(EXERCISES.MEDITATE);
-  const [time,setTime] = useState(30);
+  const [time,setTime] = useState(150);
   const [selectMode,setSelectMode] = useState(false);
   
   //Handling display time in the right format

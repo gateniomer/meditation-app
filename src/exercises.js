@@ -1,7 +1,7 @@
 const EXERCISES = {
   MEDITATE:{
     title: "Meditate",
-    shortDescription: "lorem ipsum",
+    shortDescription: `When we meditate, we inject far-reaching and long-lasting benefits into our lives: We lower our stress levels, we get to know our pain, we connect better, we improve our focus, and we're kinder to ourselves.`,
     description: "lorem ipsum long",
     imageUrl: "./assets/placeholder.svg",
     icon: ""

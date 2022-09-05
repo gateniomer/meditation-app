@@ -12,7 +12,7 @@ const Exercise = (props) => {
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full h-screen flex flex-col justify-center">
       <h2 className="text-center text-4xl text-white font-bold">{exercise.title}</h2>
-      <h3 className="text-center text-white max-w-md mx-auto">{exercise.shortDescription}</h3>
+      <h3 className="text-center text-white max-w-md italic mx-auto">{exercise.shortDescription}</h3>
       <CountDownTimer 
       howLong={time} 
       onFinish={onCountDownTimerFinish}
