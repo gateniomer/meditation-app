@@ -2,24 +2,15 @@ import Button from "../button/button.component";
 import { Link } from "react-router-dom";
 import EXERCISES from "../../exercises";
 import { useState } from "react";
+import { timeFormat } from "../../utils/utils";
 
 const SelectExerciseButton = ({onClickHandler}) => {
   const [exerciseSelected,setExericeSelected] = useState(EXERCISES.MEDITATE);
-  const [time,setTime] = useState(150);
+  const [time,setTime] = useState(10);
   const [selectMode,setSelectMode] = useState(false);
   
   //Handling display time in the right format
-  const timeToMinutes = Math.floor(time/60);
-  const timeToSeconds = time - timeToMinutes*60;
-  const timeToDisplay = `
-  ${time === 0 ? 'Pick Time' : ""}
-  ${timeToMinutes ? (timeToMinutes+'m') : ""}
-  ${timeToSeconds ? (timeToSeconds+'s') : ""}`;
-
-  const exerciseDetails = {
-    time:time,
-    exercise:exerciseSelected
-  }
+  const timeToDisplay = timeFormat(time);
 
   const onPlusClickHanlder = () => {
     setTime(prevTime => prevTime +10);

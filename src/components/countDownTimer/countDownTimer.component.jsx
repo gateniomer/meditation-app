@@ -12,8 +12,8 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       interval = setInterval(()=> updateTime(interval),1000);
     
     return () => {
-      console.log('return effect')
-      clearInterval(interval)}
+      clearInterval(interval)
+    }
   },[isRunning]);
 
   const updateTime = () => {
@@ -21,6 +21,7 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       if(prev > 1){
         return prev-1;
       }else{
+        setTime(howLong);
         setIsRunning(false);
         onFinish();
         return 0;
@@ -58,7 +59,9 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       {(isRunning || time !==howLong) && <Button 
       onClickHandler={()=>{
         setTime(howLong)
-        setIsRunning(false)}}>Reset</Button>}
+        setIsRunning(false)
+        onFinish()
+    }}>Finish</Button>}
       </div>
     </div>
   )
