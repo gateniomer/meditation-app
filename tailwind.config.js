@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'app':['Roboto','sans-serif']
+      'app':['Roboto','sans-serif'],
+      'Lobster':['Lobster,sans-serif']
     },
     extend: {
       keyframes: {
