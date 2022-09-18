@@ -9,13 +9,13 @@ module.exports = {
       'Lobster':['Lobster,sans-serif']
     },
     animation: {
-      wiggle: 'wiggle 1s ease-in-out infinite',
+      grow: 'grow 1s ease-in-out infinite',
     },
     extend: {
       keyframes: {
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)',transform:'scale(1.2)' },
+        grow: {
+          '0%, 100%': {  },
+          '50%': { transform:'scale(1.1)' },
         },
         
       }

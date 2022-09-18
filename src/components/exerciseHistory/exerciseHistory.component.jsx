@@ -6,7 +6,7 @@ const ExerciseHistory = ({history,onDelHistory}) =>{
     {history.map((item,acc) => {
     const time = timeFormat(item.time);
     return <div key={acc} className='flex my-2 place-content-between bg-slate-50 rounded-full px-2 items-center shadow-lg border-blue-500 border-4'>
-      <span className="bg-slate-300 leading-8 text-center w-8 h-8 rounded-full">{acc+1}</span>
+      <span className="bg-slate-300 leading-8 text-center w-8 h-8 rounded-full">{item.exercise.emoji}</span>
       <div className="mx-3">
       <span className="block font-bold">{item.exercise.title}</span>
       <span className="text-gray-600">{time}</span>
