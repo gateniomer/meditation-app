@@ -41,8 +41,6 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
   return (
     <div className="flex flex-col mx-auto justify-center items-center ">
 
-      {console.log('Stopwatch rendered',time)}
-
       <ExerciseLogo className="w-48 h-48 mb-3"/>
       {printTime()}
       <div className='flex'>

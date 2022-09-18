@@ -12,9 +12,13 @@ export const getExerciseListFromLocalStorage = () => {
   const list = JSON.parse(data);
   return (list ? list : []);
 }
+export const saveExerciseListToLocalStorage = (list) => {
+  const data = JSON.stringify(list);
+  localStorage.setItem('exercises',data);
+  return list;
+}
 export const saveExerciseToLocalStorage = (state) => {
   let list = getExerciseListFromLocalStorage();
-  console.log(typeof list);
   list ? list.push(state) : list = [state];
   const data = JSON.stringify(list);
   localStorage.setItem('exercises',data);

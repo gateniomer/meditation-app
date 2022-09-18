@@ -10,11 +10,6 @@ const Exercise = (props) => {
   const {time,exercise} = state;
 
   const onCountDownTimerFinish = () => {
-    console.log('Finished!');
-  //   navigate('/summary',
-  //   {state,
-  //   replace: true
-  // });
   setIsFinished(true);
   }
 
