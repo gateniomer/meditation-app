@@ -1,24 +1,19 @@
-import { Link } from 'react-router-dom';
 import ExerciseHistory from '../components/exerciseHistory/exerciseHistory.component';
-import { getExerciseListFromLocalStorage,saveExerciseListToLocalStorage, timeFormat } from '../utils/utils';
+import { getLastSelectedFromLocalStorage, timeFormat } from '../utils/utils';
 import { useState } from 'react';
 import EXERCISES from '../exercises';
+import SubmitButton from '../components/submitButton/submitButton.component';
+import NewTimer from '../components/newTimer/newTimer.component';
 const Home = () => {
-  const [time,setTime] = useState(60);
-  const [history,setHistory] = useState(getExerciseListFromLocalStorage());
+  //get lastest data selected
+  const lastSelected = getLastSelectedFromLocalStorage();
+  //time of exercise
+  const [time,setTime] = useState(lastSelected ? lastSelected.time : 60);
+  //type of exercise
+  const [exerciseSelected,setExericeSelected] = useState(lastSelected ? lastSelected.exercise : EXERCISES.MEDITATE);
+  
+  //random quote (from api)
   const [quote,setQuote] = useState('');
-  const [exerciseSelected,setExericeSelected] = useState(EXERCISES.MEDITATE);
-  const onDelHistory = (acc)=>{
-  const historyList = getExerciseListFromLocalStorage();
-  historyList.splice(acc,1);
-  saveExerciseListToLocalStorage(historyList);
-  return historyList;
-  }
-  const onDelHistoryHandler = (acc)=>{
-    const newList = onDelHistory(acc);
-    setHistory(newList);
-  }
-
   //fetch new quote
   if(quote==='')
   fetch('https://api.quotable.io/random?maxLength=70').then(response => response.json())
@@ -28,6 +23,7 @@ const Home = () => {
   return(
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full h-screen lg:flex justify-center items-center space-x-5 px-3">
       <div>
+      <NewTimer value={11}/>
       <h1 className='text-8xl text-white font-bold font-Lobster'>Hello, @user</h1>
       {quote && 
       <span className='block text-3xl text-gray-700 max-w-xl font-Lobster mb-3 italic'>
@@ -81,12 +77,9 @@ const Home = () => {
         />
       </div>
 
-      <Link to="exercise" state={({time,exercise:exerciseSelected})}>
-      <button className='bg-blue-100 px-5 py-1 rounded-lg text-3xl mt-3 font-Lobster text-gray-700 font-bold tracking-widest border-4 border-blue-600 shadow-xl' onClick={()=>{}}>Begin {exerciseSelected.title}</button>
-      </Link>
+      <SubmitButton state={{time,exercise:exerciseSelected}}/>
       </div>
-      {/* <SelectExerciseButton/> */}
-      <ExerciseHistory history={history} onDelHistory={onDelHistoryHandler}/>
+      <ExerciseHistory/>
     </div>
   )
 }

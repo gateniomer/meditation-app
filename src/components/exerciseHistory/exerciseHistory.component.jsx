@@ -1,6 +1,17 @@
 import { timeFormat } from "../../utils/utils";
+import { getExerciseListFromLocalStorage,saveExerciseListToLocalStorage } from "../../utils/utils";
+import { useState } from "react";
+const ExerciseHistory = () =>{
+  const [history,setHistory] = useState(getExerciseListFromLocalStorage());
 
-const ExerciseHistory = ({history,onDelHistory}) =>{
+  const onDelHistory = (acc)=>{
+    const historyList = getExerciseListFromLocalStorage();
+    historyList.splice(acc,1);
+    saveExerciseListToLocalStorage(historyList);
+    setHistory(historyList);
+    return historyList;
+    }
+
   return (<div className="md:w-3/12">
     <h2 className="text-2xl font-bold my-2">History</h2>
     {history.map((item,acc) => {

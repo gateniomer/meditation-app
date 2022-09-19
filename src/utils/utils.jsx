@@ -24,3 +24,15 @@ export const saveExerciseToLocalStorage = (state) => {
   localStorage.setItem('exercises',data);
   return list;
 }
+
+export const saveLastSelectedToLocalStorage = (state) => {
+  const data = JSON.stringify(state);
+  localStorage.setItem('lastSelected',data);
+  return state;
+}
+
+export const getLastSelectedFromLocalStorage = () => {
+  const data = localStorage.getItem('lastSelected');
+  const state = JSON.parse(data);
+  return state;
+}
