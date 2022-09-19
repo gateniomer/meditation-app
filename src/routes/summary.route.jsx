@@ -13,7 +13,9 @@ const Summary = () => {
     navigate('/');
   }
   const onSaveHandler = () => {
-    saveExerciseToLocalStorage(state);
+    const date = new Date();
+    const dateFormat = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()<10?'0':''}${date.getMinutes()}`;
+    saveExerciseToLocalStorage({date:dateFormat,...state});
     navigate('/',{state});
   }
 
