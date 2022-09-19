@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react'; 
 import Button from '../button/button.component'; 
-import {ReactComponent as ExerciseLogo} from '../../assets/placeholder.svg';
 
 export const CountDownTimer = ({howLong,onFinish}) =>{
   const [time,setTime] = useState(howLong);
@@ -31,7 +30,7 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
   const printTime = () => {
     const minutes = Math.floor(time/60);
     const seconds = time-minutes*60;
-    return <span className='text-5xl mb-10 text-white font-semibold'>
+    return <span className='text-5xl text-white font-semibold'>
       {(minutes.toString().length === 1) ?
       `0${minutes}` : minutes}
       :
@@ -39,10 +38,10 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       </span>;
   }
   return (
-    <div className="flex flex-col mx-auto justify-center items-center ">
+    <div className="flex flex-col justify-center items-center ">
 
-      <ExerciseLogo className="w-48 h-48 mb-3"/>
       {printTime()}
+      <br />
       <div className='flex'>
       {!isRunning && time === howLong && <Button 
       onClickHandler={()=> setIsRunning(true)}>Start</Button>}

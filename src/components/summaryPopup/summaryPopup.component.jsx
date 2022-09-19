@@ -1,11 +1,9 @@
-import { useLocation } from "react-router-dom";
-import Button from "../components/button/button.component";
-import { timeFormat } from "../utils/utils";
+import { timeFormat } from '../../utils/utils';
 import { useNavigate } from "react-router-dom";
-import { saveExerciseToLocalStorage } from "../utils/utils";
+import {saveExerciseToLocalStorage} from "../../utils/utils";
+import Button from "../button/button.component";
 
-const Summary = () => {
-  const {state} = useLocation();
+const SummaryPopup = ({state}) => {
   const time = timeFormat(state.time);
   let navigate = useNavigate();
 
@@ -31,4 +29,4 @@ const Summary = () => {
   </div>)
 }
 
-export default Summary;
+export default SummaryPopup;
