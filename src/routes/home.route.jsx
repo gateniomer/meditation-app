@@ -69,9 +69,6 @@ const Home = () => {
       <span className='block text-1xl max-w-md text-gray-300'>{exerciseSelected.shortDescription}</span>
       </div>
       <br />
-
-      
-      {/* <TimePicker/> */}
       <SubmitButton state={{time,exercise:exerciseSelected}}/>
       </div>
       <ExerciseHistory/>
