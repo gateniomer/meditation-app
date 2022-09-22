@@ -1,12 +1,18 @@
 import Home from "./routes/home.route";
+import User from "./routes/user.route";
 import Exercise from "./routes/exercise.route";
-import { BrowserRouter,Route,Routes } from "react-router-dom";
+import { BrowserRouter,Route,Routes,Navigate } from "react-router-dom";
+import { getUserFromLocalStorage } from "./utils/utils";
+
 
 function App() {
+  const user = getUserFromLocalStorage();
+  console.log('app');
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="start" element={<User/>}/>
         <Route path="exercise" element={<Exercise/>}/>
         <Route
         path="*"

@@ -36,3 +36,14 @@ export const getLastSelectedFromLocalStorage = () => {
   const state = JSON.parse(data);
   return state;
 }
+
+export const getUserFromLocalStorage = () => {
+  const data = localStorage.getItem('user');
+  const user = JSON.parse(data);
+  return user;
+}
+
+export const setUserFromLocalStorage = (user) => {
+  const data = JSON.stringify(user);
+  localStorage.setItem('user',data);
+}

@@ -10,6 +10,7 @@ module.exports = {
     },
     animation: {
       grow: 'grow 1s ease-in-out infinite',
+      growOnce:'growOnce 0.5s ease-in-out forwards'
     },
     extend: {
       keyframes: {
@@ -17,6 +18,11 @@ module.exports = {
           '0%, 100%': {  },
           '50%': { transform:'scale(1.1)' },
         },
+        growOnce:{
+          '0%':{transform:'scale(0)',opacity:'0'},
+          '75%':{transform:'scale(1.1)'},
+          '100%':{transform:'scale(1)',opacity:'1'}
+        }
         
       }
     },

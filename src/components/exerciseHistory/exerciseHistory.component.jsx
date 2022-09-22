@@ -2,7 +2,7 @@ import { timeFormat } from "../../utils/utils";
 import { getExerciseListFromLocalStorage,saveExerciseListToLocalStorage } from "../../utils/utils";
 import { useState } from "react";
 const ExerciseHistory = () =>{
-  const [history,setHistory] = useState(getExerciseListFromLocalStorage());
+  const [history,setHistory] = useState(getExerciseListFromLocalStorage().reverse());
 
   const onDelHistory = (acc)=>{
     const historyList = getExerciseListFromLocalStorage();
@@ -13,7 +13,7 @@ const ExerciseHistory = () =>{
     }
 
   return (<div className="md:w-3/12">
-    <h2 className="text-3xl font-bold my-2">History</h2>
+    <h2 className="text-4xl text-white font-Lobster font-bold my-2">Exercises History</h2>
     <div className="overflow-scroll overflow-x-hidden max-h-[200px] scrollbar">
     {history.map((item,acc) => {
     const time = timeFormat(item.time);

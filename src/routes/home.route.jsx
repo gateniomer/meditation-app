@@ -3,8 +3,8 @@ import { getLastSelectedFromLocalStorage, timeFormat } from '../utils/utils';
 import { useState } from 'react';
 import EXERCISES from '../exercises';
 import SubmitButton from '../components/submitButton/submitButton.component';
-import NewTimer from '../components/newTimer/newTimer.component';
-import TimePicker from '../components/timePicker/timePicker.component';
+import { getUserFromLocalStorage } from '../utils/utils';
+import {Navigate } from 'react-router-dom';
 const Home = () => {
   //get lastest data selected
   const lastSelected = getLastSelectedFromLocalStorage();
@@ -12,6 +12,8 @@ const Home = () => {
   const [time,setTime] = useState(lastSelected ? lastSelected.time : 60);
   //type of exercise
   const [exerciseSelected,setExericeSelected] = useState(lastSelected ? lastSelected.exercise : EXERCISES.MEDITATE);
+  //get user name from local storage
+  const user = getUserFromLocalStorage();
   
   //random quote (from api)
   const [quote,setQuote] = useState('');
@@ -21,10 +23,10 @@ const Home = () => {
   .then(data=>setQuote(data))
   .catch(err => console.log(err))
 
-  return(
+  return(user ? 
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full min-h-screen lg:flex justify-center items-center space-x-5 px-3">
       <div>
-      <h1 className='text-8xl text-white font-bold font-Lobster'>Hello, @user</h1>
+      <h1 className='text-8xl text-white font-bold font-Lobster pt-5'>Hello, {user ? user.charAt(0).toUpperCase() + user.slice(1) : 'Guest'}</h1>
       {quote && 
       <span className='block text-3xl text-gray-700 max-w-xl font-Lobster mb-3 italic'>
       {quote.content + ' '}
@@ -35,7 +37,7 @@ const Home = () => {
       
 
       <span className='text-lg font-semibold text-gray-700'>1. Type of exercise</span>
-      <div className='flex items-center my-2 gap-2'>
+      <div className='flex items-center my-2 gap-2 flex-wrap max-w-lg'>
       {Object.keys(EXERCISES).map(key => 
         <span 
         key={key} 
@@ -72,7 +74,7 @@ const Home = () => {
       <SubmitButton state={{time,exercise:exerciseSelected}}/>
       </div>
       <ExerciseHistory/>
-    </div>
+    </div>:<Navigate to={('/start')}/>
   )
 }
 export default Home;
