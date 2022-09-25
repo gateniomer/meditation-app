@@ -12,7 +12,7 @@ const ExerciseHistory = () =>{
     return historyList;
     }
 
-  return (<div className="md:w-3/12">
+  return (<div className="md:w-3/12 w-full">
     <h2 className="text-4xl text-white font-Lobster font-bold my-2">Exercises History</h2>
     <div className="overflow-scroll overflow-x-hidden max-h-[200px] scrollbar">
     {history.map((item,acc) => {

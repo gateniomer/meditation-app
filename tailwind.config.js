@@ -13,6 +13,21 @@ module.exports = {
       growOnce:'growOnce 0.5s ease-in-out forwards'
     },
     extend: {
+      colors:{
+        'bg':{
+          'main':{
+            'light':'#772342',
+            'dark':'#000000'
+          }
+        },
+        'text':{
+          'light':'#f1f1f1'
+        },
+        'button':{
+          'main':'#06c200'
+        },
+        'mainColor':'#5883c0'
+      },
       keyframes: {
         grow: {
           '0%, 100%': {  },

@@ -13,15 +13,17 @@ const User = () => {
     }
   }
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full min-h-screen flex flex-col justify-center items-center px-3">
-      <div className="max-w-[500px]">
-        <h1 className="font-Lobster text-white text-5xl">Hi there 👋</h1>
-        <h2 className="text-white font-Lobster text-5xl">Welcome to <span className="font-bold text-green-400 text-6xl block">Meditation Tracker</span></h2>
-        <span>Please enter your name</span>
+    <div className="page bg-main">
+      <div className="container animate-growOnce text-text-light">
+
+        <h1 className="font-Lobster text-text-light text-7xl mb-5">Hi there,</h1>
+        <h2 className=" font-Lobster text-5xl">Welcome to <span className="font-bold text-mainColor text-6xl block mb-5">Meditation Tracker ⏱️</span></h2>
+        <span className="blocktext-xl">The app that let you track your daily meditation exercises!</span>
+        <span className=" italic block">Created by Omer Gatenio</span>
+        <span className="text-md italic block mt-3">Your Name</span>
+        <input type="text" className="w-[200px] rounded-lg h-[30px] outline-none px-1 focus text-mainColor" onInput={e=>setInput(e.target.value)}/>
         <br />
-        <input type="text" className="w-[200px]" onInput={e=>setInput(e.target.value)}/>
-        <br />
-        <button className="bg-blue-300 my-5" onClick={onClickHandler}>Start</button>
+        <button className="bg-mainColor my-5 rounded-lg px-5 py-1  font-bold text-2xl shadow-lg" onClick={onClickHandler}>Start</button>
       </div>
       
     </div>

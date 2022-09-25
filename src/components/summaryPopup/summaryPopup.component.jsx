@@ -18,8 +18,8 @@ const SummaryPopup = ({state}) => {
   }
 
   return (
-  <div className="bg-black bg-opacity-60 text-white absolute w-full h-screen flex flex-col items-center justify-center">
-    <div className='bg-blue-500 shadow-lg border-[7px] border-blue-400 p-5 rounded-lg animate-growOnce mx-5'>
+  <div className="bg-black bg-opacity-60 text-text-light absolute w-full h-screen flex flex-col items-center justify-center">
+    <div className='bg-blue-600 shadow-xl p-5 rounded-lg animate-growOnce mx-5 max-w-[450px]'>
       <h1 className='text-4xl font-Lobster'>Exercise Summary</h1>
       <span className='text-lg font-Lobster font-light'>Way to go 👏</span>
       <br />

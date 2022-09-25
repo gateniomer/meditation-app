@@ -14,9 +14,8 @@ const Exercise = (props) => {
   }
 
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full min-h-screen flex justify-center items-center">
-      {isFinished && <SummaryPopup state={state}/>}
-      <div className="bg-slate-400 rounded-3xl shadow-lg px-4 py-8 mx-3 border-[7px] border-gray-600">
+    <div className="page bg-main">
+      <div className="container max-w-[400px] animate-growOnce">
       <h2 className="text-center text-5xl text-white font-bold font-Lobster">{exercise.title} {exercise.emoji}</h2>
       <br />
       <h3 className="text-center text-white max-w-sm italic mx-auto">{exercise.shortDescription}</h3>
@@ -26,6 +25,7 @@ const Exercise = (props) => {
       onFinish={onCountDownTimerFinish}
       />
       </div>
+      {isFinished && <SummaryPopup state={state}/>}
     </div>
   )
 }
