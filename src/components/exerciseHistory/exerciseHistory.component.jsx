@@ -1,9 +1,9 @@
-import { getUserFromLocalStorage, getUsersFromLocalStorage, setUserToLocalStorage, timeFormat } from "../../utils/utils";
+import { getSelectedUserFromLocalStorage, getUserFromLocalStorage, getUsersFromLocalStorage, setUserToLocalStorage, timeFormat } from "../../utils/utils";
 import { useState } from "react";
 const ExerciseHistory = ({list}) =>{
   const [history,setHistory] = useState(list.reverse());
   const onDelHistory = (acc)=>{
-    const user = getUserFromLocalStorage();
+    const user = getSelectedUserFromLocalStorage();
     user.exercises.splice(acc,1);
     setUserToLocalStorage(user);
     setHistory(user.exercises);

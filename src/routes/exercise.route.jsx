@@ -2,15 +2,17 @@ import CountDownTimer from "../components/countDownTimer/countDownTimer.componen
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import SummaryPopup from "../components/summaryPopup/summaryPopup.component";
+import sound from '../assets/finished.mp3';
 
 
 const Exercise = (props) => {
   const [isFinished, setIsFinished] = useState(false);
   const {state} = useLocation();
   const {time,exercise} = state;
-
   const onCountDownTimerFinish = () => {
-  setIsFinished(true);
+    setIsFinished(true);
+    var audio = new Audio(sound);
+    audio.play();
   }
 
   return (

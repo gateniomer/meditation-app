@@ -20,8 +20,7 @@ const User = () => {
 
         <h1 className="font-Lobster text-text-light text-7xl mb-5">Hi there,</h1>
         <h2 className=" font-Lobster text-5xl">Welcome to <span className="font-bold text-mainColor text-6xl block mb-5">Meditation Tracker ⏱️</span></h2>
-        <span className="block text-xl">The app that let you track your daily meditation exercises!</span>
-        <span className="block text-xl">By choosing from {Object.keys(EXERCISES).length} exercies..</span>
+        <span className="block text-xl">Meditation Tracker lets you <strong>choose from {Object.keys(EXERCISES).length} different exercies to track & practice daily!</strong> This app was created as part of my learning journey to become a Full-Stack developer, thank you for trying it out!</span>
         <span className=" italic block">Created by Omer Gatenio</span>
         <span className="text-md italic block mt-3">Your Name</span>
         <input type="text" className="w-[200px] rounded-lg h-[30px] outline-none px-1 focus text-mainColor" onInput={e=>setInput(e.target.value)}/>

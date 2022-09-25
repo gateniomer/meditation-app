@@ -38,11 +38,11 @@ export const CountDownTimer = ({howLong,onFinish}) =>{
       </span>;
   }
   return (
-    <div className="flex flex-col justify-center items-center ">
+    <div className="flex flex-col justify-center items-center w-full">
 
       {printTime()}
       <br />
-      <div className='flex'>
+      <div className='flex gap-1'>
       {!isRunning && time === howLong && <Button 
       onClickHandler={()=> setIsRunning(true)}>Start</Button>}
 

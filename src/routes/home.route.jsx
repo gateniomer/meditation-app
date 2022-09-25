@@ -27,12 +27,15 @@ const Home = () => {
   return(user ? 
     <div className="page bg-main">
       <div className='text-text-light'>
-      <h1 className='text-8xl text-mainColor font-bold font-Lobster pt-5'>Hi {user ? user.name.charAt(0).toUpperCase() + user.name.slice(1) : 'Guest'},</h1>
-      <span onClick={()=>navigate('login')} className='cursor-pointer'>👤Change User</span>
-      <span onClick={()=>{
-        deleteUserFromLocalStorage();
-        navigate('login');
-        }} className='cursor-pointer inline-block ml-2'>❌Delete User</span>
+      <div className='bg-[rgba(0,0,0,0.2)] p-2 rounded-lg max-w-sm my-2'>
+        <span className="bg-mainColor w-[30px] h-[30px] rounded-full leading-[30px] text-[20px] inline-block text-center mr-2">{user.name[0].toUpperCase()}</span>
+        <span onClick={()=>navigate('login')} className='cursor-pointer'>👤Change User</span>
+        <span onClick={()=>{
+          deleteUserFromLocalStorage();
+          navigate('login');
+          }} className='cursor-pointer inline-block ml-2'>❌Delete User</span>
+      </div>
+      <h1 className='text-8xl text-mainColor font-bold font-Lobster'>Hi {user ? user.name.charAt(0).toUpperCase() + user.name.slice(1) : 'Guest'},</h1>
       {quote && 
       <span className='block text-3xl max-w-xl font-Lobster mb-3 italic'>
       {quote.content + ' '}
@@ -76,7 +79,7 @@ const Home = () => {
       <span className='block text-1xl max-w-md text-gray-300'>{exerciseSelected.shortDescription}</span>
       </div>
       <br />
-      <SubmitButton state={{time,exercise:exerciseSelected}}/>
+      <SubmitButton state={{time:10,exercise:exerciseSelected}}/>
       </div>
       <ExerciseHistory list={user.exercises}/>
     </div>:<Navigate to={('login')}/>
