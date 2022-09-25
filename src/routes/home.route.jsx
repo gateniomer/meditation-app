@@ -1,19 +1,20 @@
 import ExerciseHistory from '../components/exerciseHistory/exerciseHistory.component';
-import { getLastSelectedFromLocalStorage, timeFormat } from '../utils/utils';
+import { deleteUserFromLocalStorage, getLastSelectedFromLocalStorage, getSelectedUserFromLocalStorage, timeFormat } from '../utils/utils';
 import { useState } from 'react';
 import EXERCISES from '../exercises';
 import SubmitButton from '../components/submitButton/submitButton.component';
-import { getUserFromLocalStorage } from '../utils/utils';
-import {Navigate } from 'react-router-dom';
+import { getUsersFromLocalStorage } from '../utils/utils';
+import {Navigate,useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate = useNavigate();
   //get lastest data selected
   const lastSelected = getLastSelectedFromLocalStorage();
   //time of exercise
   const [time,setTime] = useState(lastSelected ? lastSelected.time : 60);
   //type of exercise
   const [exerciseSelected,setExericeSelected] = useState(lastSelected ? lastSelected.exercise : EXERCISES.MEDITATE);
-  //get user name from local storage
-  const user = getUserFromLocalStorage();
+  //get user from local storage
+  const user = getSelectedUserFromLocalStorage();
   
   //random quote (from api)
   const [quote,setQuote] = useState('');
@@ -26,7 +27,12 @@ const Home = () => {
   return(user ? 
     <div className="page bg-main">
       <div className='text-text-light'>
-      <h1 className='text-8xl text-mainColor font-bold font-Lobster pt-5'>Hi {user ? user.charAt(0).toUpperCase() + user.slice(1) : 'Guest'},</h1>
+      <h1 className='text-8xl text-mainColor font-bold font-Lobster pt-5'>Hi {user ? user.name.charAt(0).toUpperCase() + user.name.slice(1) : 'Guest'},</h1>
+      <span onClick={()=>navigate('login')} className='cursor-pointer'>👤Change User</span>
+      <span onClick={()=>{
+        deleteUserFromLocalStorage();
+        navigate('login');
+        }} className='cursor-pointer inline-block ml-2'>❌Delete User</span>
       {quote && 
       <span className='block text-3xl max-w-xl font-Lobster mb-3 italic'>
       {quote.content + ' '}
@@ -72,8 +78,8 @@ const Home = () => {
       <br />
       <SubmitButton state={{time,exercise:exerciseSelected}}/>
       </div>
-      <ExerciseHistory/>
-    </div>:<Navigate to={('/start')}/>
+      <ExerciseHistory list={user.exercises}/>
+    </div>:<Navigate to={('login')}/>
   )
 }
 export default Home;

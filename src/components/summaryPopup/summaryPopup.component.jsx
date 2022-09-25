@@ -1,7 +1,8 @@
-import { timeFormat } from '../../utils/utils';
+import { getSelectedUserFromLocalStorage, timeFormat } from '../../utils/utils';
 import { useNavigate } from "react-router-dom";
-import {saveExerciseToLocalStorage} from "../../utils/utils";
+import {getUserFromLocalStorage,setUserToLocalStorage} from "../../utils/utils";
 import Button from "../button/button.component";
+
 
 const SummaryPopup = ({state}) => {
   const time = timeFormat(state.time);
@@ -13,7 +14,9 @@ const SummaryPopup = ({state}) => {
   const onSaveHandler = () => {
     const date = new Date();
     const dateFormat = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()<10?'0':''}${date.getMinutes()}`;
-    saveExerciseToLocalStorage({date:dateFormat,...state});
+    const user = getSelectedUserFromLocalStorage();
+    user.exercises.push({date:dateFormat,...state})
+    setUserToLocalStorage(user);
     navigate('/',{state});
   }
 

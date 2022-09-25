@@ -1,18 +1,16 @@
-import { timeFormat } from "../../utils/utils";
-import { getExerciseListFromLocalStorage,saveExerciseListToLocalStorage } from "../../utils/utils";
+import { getUserFromLocalStorage, getUsersFromLocalStorage, setUserToLocalStorage, timeFormat } from "../../utils/utils";
 import { useState } from "react";
-const ExerciseHistory = () =>{
-  const [history,setHistory] = useState(getExerciseListFromLocalStorage().reverse());
-
+const ExerciseHistory = ({list}) =>{
+  const [history,setHistory] = useState(list.reverse());
   const onDelHistory = (acc)=>{
-    const historyList = getExerciseListFromLocalStorage();
-    historyList.splice(acc,1);
-    saveExerciseListToLocalStorage(historyList);
-    setHistory(historyList);
-    return historyList;
+    const user = getUserFromLocalStorage();
+    user.exercises.splice(acc,1);
+    setUserToLocalStorage(user);
+    setHistory(user.exercises);
+    return user.exercises;
     }
 
-  return (<div className="max-w-[400px] w-full">
+  return (history.length ? <div className="max-w-[400px] w-full">
     <h2 className="text-4xl text-white font-Lobster font-bold my-2">Exercises History</h2>
     <div className="overflow-scroll overflow-x-hidden max-h-[200px] scrollbar">
     {history.map((item,acc) => {
@@ -28,7 +26,7 @@ const ExerciseHistory = () =>{
       </div>
 })}
     </div>
-  </div>)
+  </div> : "")
 }
 
 export default ExerciseHistory;
