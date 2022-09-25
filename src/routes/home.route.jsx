@@ -79,7 +79,7 @@ const Home = () => {
       <span className='block text-1xl max-w-md text-gray-300'>{exerciseSelected.shortDescription}</span>
       </div>
       <br />
-      <SubmitButton state={{time:10,exercise:exerciseSelected}}/>
+      <SubmitButton state={{time,exercise:exerciseSelected}}/>
       </div>
       <ExerciseHistory list={user.exercises}/>
     </div>:<Navigate to={('login')}/>
