@@ -24,9 +24,9 @@ module.exports = {
           'light':'#f1f1f1'
         },
         'button':{
-          'main':'#06c200'
+          'main':'#4697E8'
         },
-        'mainColor':'#5883c0'
+        'mainColor':'#4697E8'
       },
       keyframes: {
         grow: {
