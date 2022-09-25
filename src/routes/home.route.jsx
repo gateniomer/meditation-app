@@ -26,7 +26,7 @@ const Home = () => {
   return(user ? 
     <div className="page bg-main">
       <div className='text-text-light'>
-      <h1 className='text-8xl text-mainColor font-bold font-Lobster pt-5'>Hello, {user ? user.charAt(0).toUpperCase() + user.slice(1) : 'Guest'}</h1>
+      <h1 className='text-8xl text-mainColor font-bold font-Lobster pt-5'>Hi {user ? user.charAt(0).toUpperCase() + user.slice(1) : 'Guest'},</h1>
       {quote && 
       <span className='block text-3xl max-w-xl font-Lobster mb-3 italic'>
       {quote.content + ' '}
