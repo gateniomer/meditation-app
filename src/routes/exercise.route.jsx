@@ -16,7 +16,21 @@ const Exercise = () => {
     audio.play();
   }
   let wakeLock = null;
-
+  useEffect(()=>{
+    requestWakeLock();
+    window.addEventListener('visibilitychange',()=>{
+      if (wakeLock !== null && document.visibilityState === 'visible') {
+        requestWakeLock();
+      }
+    })
+    return ()=>{
+      window.removeEventListener('visibilitychange',()=>{
+        if (wakeLock !== null && document.visibilityState === 'visible') {
+          requestWakeLock();
+        }
+      })
+    }
+  },[])
   const requestWakeLock = async () => {
     try {
       wakeLock = await navigator.wakeLock.request('screen');
@@ -29,12 +43,8 @@ const Exercise = () => {
       console.log(err);
     }
   } 
-  requestWakeLock();
-  window.addEventListener('visibilitychange',()=>{
-    if (wakeLock !== null && document.visibilityState === 'visible') {
-      requestWakeLock();
-    }
-  })
+  
+  
   return (
     <div className="page bg-main">
       <div className="container max-w-[400px] animate-growOnce">
