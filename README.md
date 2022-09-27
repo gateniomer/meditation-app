@@ -32,3 +32,5 @@ I hope someone will find this app helpful, thank you for your time 😁
 Live site: https://cheerful-empanada-483be5.netlify.app/
 
 Github repo: https://github.com/gateniomer/meditation-app
+
+![showcase](./src/assets/showcase.png)
