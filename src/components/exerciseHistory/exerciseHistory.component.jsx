@@ -1,4 +1,4 @@
-import { getSelectedUserFromLocalStorage, getUserFromLocalStorage, getUsersFromLocalStorage, setUserToLocalStorage, timeFormat } from "../../utils/utils";
+import { getSelectedUserFromLocalStorage, setUserToLocalStorage, timeFormat } from "../../utils/utils";
 import { useState } from "react";
 const ExerciseHistory = ({list}) =>{
   const [history,setHistory] = useState(list.reverse());

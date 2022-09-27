@@ -1,6 +1,6 @@
 import { getSelectedUserFromLocalStorage, timeFormat } from '../../utils/utils';
 import { useNavigate } from "react-router-dom";
-import {getUserFromLocalStorage,setUserToLocalStorage} from "../../utils/utils";
+import {setUserToLocalStorage} from "../../utils/utils";
 import Button from "../button/button.component";
 
 
