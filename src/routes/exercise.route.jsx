@@ -16,24 +16,6 @@ const Exercise = () => {
     audio.play();
   }
   let wakeLock = null;
-  
-  const requestKeepScreenAwake = async () => {
-    if ('wakeLock' in navigator) {
-      try {
-        let wakeLock;
-        wakeLock = await navigator.wakeLock.request('screen');
-        console.log('Wake Lock is active!')
-        wakeLock.addEventListener('release', () => {
-          console.log('Wake Lock has been released');
-        });
-        return wakeLock;
-      } catch (err) {
-        console.log(`${err.name}, ${err.message}`);
-      }
-    } else {
-      console.log('Wake lock is not supported by this browser.');
-    }
-  }
 
   const requestWakeLock = async () => {
     try {
