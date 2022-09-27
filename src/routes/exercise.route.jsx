@@ -10,11 +10,15 @@ const Exercise = () => {
   const [isFinished, setIsFinished] = useState(false);
   const {state} = useLocation();
   const {time,exercise} = state;
+
+  //Play sound when countdown is finished
   const onCountDownTimerFinish = () => {
     setIsFinished(true);
     var audio = new Audio(sound);
     audio.play();
   }
+
+  //Keep screen on with WakeLock API
   let wakeLock = null;
   useEffect(()=>{
     requestWakeLock();
@@ -32,11 +36,6 @@ const Exercise = () => {
   const requestWakeLock = async () => {
     try {
       wakeLock = await navigator.wakeLock.request('screen');
-      console.log('Wake Lock is active!');
-      wakeLock.addEventListener('release', () => {
-        console.log('Wake Lock relesed!')
-      });
-
     } catch (err) {
       console.log(err);
     }
