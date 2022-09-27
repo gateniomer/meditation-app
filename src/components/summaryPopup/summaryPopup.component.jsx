@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {setUserToLocalStorage} from "../../utils/utils";
 import Button from "../button/button.component";
 
-
 const SummaryPopup = ({state}) => {
   const time = timeFormat(state.time);
   let navigate = useNavigate();

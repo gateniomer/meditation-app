@@ -7,13 +7,16 @@ const User = () => {
   const [input,setInput] = useState('');
   const navigate = useNavigate();
   const users = getUsersFromLocalStorage();
+
+  //on login button clicked
   const onClickHandler = () => {
     const username = input.trim();
     if(username!=='') {
       createUserInLocalStorage(username);
       navigate('/');
     }
-  }
+  }//onClickHandler()
+  
   return (
     <div className="page bg-main">
       <div className="container animate-growOnce text-text-light">

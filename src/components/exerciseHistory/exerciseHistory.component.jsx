@@ -8,7 +8,7 @@ const ExerciseHistory = ({list}) =>{
     setUserToLocalStorage(user);
     setHistory(user.exercises);
     return user.exercises;
-    }
+  }
 
   return (history.length ? <div className="max-w-[400px] w-full">
     <h2 className="text-4xl text-white font-Lobster font-bold my-2">Exercises History</h2>

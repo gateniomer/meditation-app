@@ -48,7 +48,7 @@ const Home = () => {
       </span>
       }
 
-
+      {/* Choose exercise type*/}
       <span className='text-lg italic block mt-10'>1. Type of exercise</span>
       <div className='flex items-center my-2 gap-2 flex-wrap max-w-lg'>
       {Object.keys(EXERCISES).map(key => 
@@ -66,6 +66,7 @@ const Home = () => {
         )}
       </div>
 
+      {/* choose exercise time */}
       <span className='text-lg italic'>2. Exercise for {timeFormat(time)}</span>
       <div className='max-w-md'>
         <input
@@ -77,15 +78,18 @@ const Home = () => {
           onChange={e=>setTime(e.target.value * 60)}
         />
       </div>
-
+      
+      {/* exercise description */}
       <div className='bg-blue-700 p-5 inline-block rounded-2xl rounded-bl-none mt-3 border-4 border-blue-500'>
       <span className='text-3xl font-bold text-cyan-300'>{exerciseSelected.title}</span>
       <br/>
       <span className='block text-1xl max-w-md text-gray-300'>{exerciseSelected.shortDescription}</span>
       </div>
       <br />
+      {/* login button */}
       <SubmitButton state={{time,exercise:exerciseSelected}}/>
       </div>
+      {/* exercise history list */}
       <ExerciseHistory list={user.exercises}/>
     </div>:<Navigate to={('login')}/>
   )

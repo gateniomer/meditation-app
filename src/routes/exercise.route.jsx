@@ -22,24 +22,31 @@ const Exercise = () => {
   let wakeLock = null;
   useEffect(()=>{
     requestWakeLock();
+    //when page is visible, request wakelock again
     window.addEventListener('visibilitychange',handleVisivilityChange);
     return ()=>{
+      //release wakelock when component is unmounted
       if(wakeLock !==null) wakeLock.release();
+      //remove wakelock listiner
       window.removeEventListener('visibilitychange',handleVisivilityChange)
     }
   },[])
+
+  //if page is visible, request wakelock again
   const handleVisivilityChange = () => {
     if (wakeLock !== null && document.visibilityState === 'visible') {
       requestWakeLock();
     }
   }
+
+  //request to keep screen awake from wakelock api
   const requestWakeLock = async () => {
     try {
       wakeLock = await navigator.wakeLock.request('screen');
     } catch (err) {
       console.log(err);
     }
-  } 
+  }//requestWakeLock()
   
   
   return (
