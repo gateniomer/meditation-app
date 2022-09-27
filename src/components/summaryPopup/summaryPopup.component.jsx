@@ -23,13 +23,11 @@ const SummaryPopup = ({state}) => {
   return (
   <div className="bg-black bg-opacity-60 text-text-light absolute w-full h-screen flex flex-col items-center justify-center">
     <div className='bg-bg-main-light shadow-xl p-5 rounded-lg animate-growOnce mx-5 max-w-[450px]'>
-      <h1 className='text-4xl font-Lobster'>Exercise Summary 🎉</h1>
+      <h1 className='text-3xl font-Lobster'>Exercise Summary 🎉</h1>
       <hr className='block mb-5 mt-2'/>
       <p className='text-lg'>You successfully completed</p>
-      <span className='text-7xl font-bold font-Lobster inline-block mx-2'>{state.exercise.title}</span>
-      <span className='inline-block ml-2 text-xl'>for {time}</span>
-      <span className='block my-5 text-lg'>Way to go! {state.exercise.emoji}</span>
-      
+      <span className='text-3xl font-bold font-Lobster inline-block mr-2 mb-5'>{state.exercise.title}</span>
+      <span className='inline-block text-xl'>for {time}</span>    
       
       <div className='flex items-center place-content-around'>
       <Button onClickHandler={onDiscardHandler} className='w-[45%] bg-red-400 font-normal'>Discard</Button>
