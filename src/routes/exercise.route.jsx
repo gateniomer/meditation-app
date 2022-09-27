@@ -18,19 +18,17 @@ const Exercise = () => {
   let wakeLock = null;
   useEffect(()=>{
     requestWakeLock();
-    window.addEventListener('visibilitychange',()=>{
-      if (wakeLock !== null && document.visibilityState === 'visible') {
-        requestWakeLock();
-      }
-    })
+    window.addEventListener('visibilitychange',handleVisivilityChange);
     return ()=>{
-      window.removeEventListener('visibilitychange',()=>{
-        if (wakeLock !== null && document.visibilityState === 'visible') {
-          requestWakeLock();
-        }
-      })
+      if(wakeLock !==null) wakeLock.release();
+      window.removeEventListener('visibilitychange',handleVisivilityChange)
     }
   },[])
+  const handleVisivilityChange = () => {
+    if (wakeLock !== null && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  }
   const requestWakeLock = async () => {
     try {
       wakeLock = await navigator.wakeLock.request('screen');
