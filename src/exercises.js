@@ -14,12 +14,19 @@ const EXERCISES = {
     shortDescription: `Pay attention to your thoughts as they pass through your mind. Don’t judge the thoughts or become involved with them. Simply observe and take note of any patterns.`,
     emoji: "😌"
   },
-  FOCUSE:{
-    title: "Focuse",
+  FOCUS:{
+    title: "Focus",
     shortDescription: `
     This form of meditation is fairly straightforward because it uses the object of our breath to focus attention, to anchor the mind and maintain awareness. Notice your mind starting to wander? Simply return to the breath.
     `,
     emoji: "🎯"
+  },
+  YOGA:{
+    title: "Yoga",
+    shortDescription: `
+    Yoga is a Hindu spiritual and ascetic discipline, a part of which, including breath control, simple meditation, and the adoption of specific bodily postures, is widely practiced for health and relaxation.
+    `,
+    emoji: "🙆"
   },
   BODY_SCAN:{
     title: "Body Scan",

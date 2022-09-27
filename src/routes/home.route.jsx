@@ -27,6 +27,8 @@ const Home = () => {
   return(user ? 
     <div className="page bg-main">
       <div className='text-text-light'>
+      
+      {/* User bar */}
       <div className='bg-[rgba(0,0,0,0.2)] p-2 rounded-lg max-w-sm my-2'>
         <span className="bg-mainColor w-[30px] h-[30px] rounded-full leading-[30px] text-[20px] inline-block text-center mr-2">{user.name[0].toUpperCase()}</span>
         <span onClick={()=>navigate('login')} className='cursor-pointer'>👤Change User</span>
@@ -35,6 +37,8 @@ const Home = () => {
           navigate('login');
           }} className='cursor-pointer inline-block ml-2'>❌Delete User</span>
       </div>
+
+      {/* Main title */}
       <h1 className='text-8xl text-mainColor font-bold font-Lobster'>Hi {user ? user.name.charAt(0).toUpperCase() + user.name.slice(1) : 'Guest'},</h1>
       {quote && 
       <span className='block text-3xl max-w-xl font-Lobster mb-3 italic'>
@@ -44,7 +48,8 @@ const Home = () => {
       </span>
       }
 
-      <span className='text-lg italic'>1. Type of exercise</span>
+
+      <span className='text-lg italic block mt-10'>1. Type of exercise</span>
       <div className='flex items-center my-2 gap-2 flex-wrap max-w-lg'>
       {Object.keys(EXERCISES).map(key => 
         <span 

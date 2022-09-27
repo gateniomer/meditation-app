@@ -3,9 +3,10 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import SummaryPopup from "../components/summaryPopup/summaryPopup.component";
 import sound from '../assets/finished.mp3';
+import { useEffect } from "react";
 
 
-const Exercise = (props) => {
+const Exercise = () => {
   const [isFinished, setIsFinished] = useState(false);
   const {state} = useLocation();
   const {time,exercise} = state;
@@ -14,7 +15,44 @@ const Exercise = (props) => {
     var audio = new Audio(sound);
     audio.play();
   }
+  let wakeLock = null;
+  
+  const requestKeepScreenAwake = async () => {
+    if ('wakeLock' in navigator) {
+      try {
+        let wakeLock;
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Wake Lock is active!')
+        wakeLock.addEventListener('release', () => {
+          console.log('Wake Lock has been released');
+        });
+        return wakeLock;
+      } catch (err) {
+        console.log(`${err.name}, ${err.message}`);
+      }
+    } else {
+      console.log('Wake lock is not supported by this browser.');
+    }
+  }
 
+  const requestWakeLock = async () => {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      console.log('Wake Lock is active!');
+      wakeLock.addEventListener('release', () => {
+        console.log('Wake Lock relesed!')
+      });
+
+    } catch (err) {
+      console.log(err);
+    }
+  } 
+  requestWakeLock();
+  window.addEventListener('visibilitychange',()=>{
+    if (wakeLock !== null && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  })
   return (
     <div className="page bg-main">
       <div className="container max-w-[400px] animate-growOnce">
