@@ -13,7 +13,7 @@ I created this project using some of the knowledge I gained in:
 
 
 ## About this app
-Meditation Tracker lets you choose different exercies to track & practice daily! This app was created as part of my learning journey to become a Full-Stack developer, thank you for trying it out!
+Meditation Tracker lets you choose different exercises to track & practice daily! This app was created as part of my learning journey to become a Full-Stack developer, thank you for trying it out!
 
 ### Main Features:
 - Choose from variety of different exercises to practice from.
